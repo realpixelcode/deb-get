@@ -1,0 +1,11 @@
+DEFVER=1
+ARCHS_SUPPORTED="amd64"
+CODENAMES_SUPPORTED="bionic focal jammy"
+get_github_releases "variar/klogg"
+if [ "${ACTION}" != "prettylist" ]; then
+    URL=$(grep "browser_download_url.*${HOST_ARCH}-${OS_CODENAME}\.deb\"" "${CACHE_FILE}" | cut -d '"' -f 4)
+    VERSION_PUBLISHED=$(cut -d '/' -f 8 <<< "${URL//v/}")
+fi
+PRETTY_NAME="klogg"
+WEBSITE="https://klogg.filimonov.dev"
+SUMMARY="klogg is an open source multi-platform GUI application to search through all kinds of text log files using regular expressions."
